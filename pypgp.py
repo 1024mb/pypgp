@@ -67,17 +67,17 @@ def main():
     parser = argparse.ArgumentParser(
         description="Send PGP encrypted email"
     )
-    parser.add_argument("--ae", "--associated-email", help="Associated email with public key or key fingerprint")
-    parser.add_argument("--rf", "--recipient-fingerprint", help="Recipient fingerprint")
-    parser.add_argument("--re", "--recipient-email", help="Recipient email")
-    parser.add_argument("--m", "--message", help="The private message you want to send")
+    parser.add_argument("--ae", "--associated-email", help="Associated email with public key or key fingerprint", metavar="ASSOCIATED-EMAIL")
+    parser.add_argument("--rf", "--recipient-fingerprint", help="Recipient fingerprint", metavar="RECIPIENT-FINGERPRINT")
+    parser.add_argument("--re", "--recipient-email", help="Recipient email", metavar="RECIPIENT-EMAIL")
+    parser.add_argument("--m", "--message", help="The private message you want to send", metavar="MESSAGE")
     parser.add_argument("--pf", "--password-file", help="Specify password file, default is password.txt.asc (Optional)", metavar="%PASSWORD-FILE%", default="password.txt.asc")
     parser.add_argument("--ef", "--email-file", help="Specify email file, default is email.txt.asc (Optional)", metavar="%EMAIL-FILE%", default="email.txt.asc")
-    parser.add_argument("--pt", "--port", help="Specify a TLS port (Optional)", metavar="%PORT%", type=int, default=587)
+    parser.add_argument("--pt", "--port", help="Specify a TLS port (Optional)", metavar="PORT", type=int, default=587)
     parser.add_argument("--at", "--attach", help="Attach public key to email (Optional)", action="store_true")
-    parser.add_argument("--s", "--subject", help="Specify the subject for the email (Optional)", default="PGP Message")
-    parser.add_argument("--ms", "--manual-server", help="Specify server manually (Optional)")
-    parser.add_argument("--pp", "--passphrase", help="Specify the passphrase to use (Optional)")
+    parser.add_argument("--s", "--subject", help="Specify the subject for the email (Optional)", default="PGP Message", metavar="SUBJECT")
+    parser.add_argument("--ms", "--manual-server", help="Specify server manually (Optional)", metavar="smtp.example.com")
+    parser.add_argument("--pp", "--passphrase", help="Specify the passphrase to use (Optional)", metavar="PASSPHRASE")
     args = parser.parse_args()
 
     cockliservers = ["cock.li","airmail.cc","420blaze.it","aaathats3as.com","cumallover.me","goat.si","horsefucker.org","national.shitposting.agency","tfwno.gf","cock.lu","cock.email","firemail.cc","memeware.net","cocaine.ninja","waifu.club","dicksinhisan.us","loves.dicksinhisan.us","wants.dicksinhisan.us","dicksinmyan.us","loves.dicksinmyan.us","wants.dicksinmyan.us"]
