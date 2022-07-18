@@ -24,7 +24,8 @@ Next step is to remove plaintext versions of your credentials:
 
 `rm -v email.txt password.txt`
 ### Usage
-Thats it, you run script by typing `python3 pypgp.py` or entering parameters, check the help for what is supported.
+Thats it, you run script by typing `python3 pypgp.py` or entering parameters, check the help for what is supported.  
+You can use `\n` in the message as a new line.
 ### Optional
 You can run script just by typing pypgp in your terminal, just add this line to your .bash_aliases file:
 `alias pypgp='python3 /home/$USER/pygpg/pypgp.py'`

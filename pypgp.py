@@ -37,7 +37,7 @@ def email(msg, username, gpg, RecipientFingerprint, RecipientEmail, EmailSubject
     msg["To"] = RecipientEmail
     msg["Subject"] = EmailSubject
     if EmailMessage is None:
-        EmailMessage = str(input("Enter your private message: "))
+        EmailMessage = str(input("Enter your private message: ")).replace("\\n", "\n")
         if EmailMessage == "":
             print("ERROR: You have to enter a message, exiting...")
             sys.exit(1)
@@ -91,8 +91,12 @@ def main():
     RecipientFingerprint = args.rf
     RecipientEmail = args.re
     EmailSubject = args.s
-    EmailMessage = args.m
 
+    if args.m is not None:
+        EmailMessage = args.m.replace("\\n","\n")
+    else:
+        EmailMessage = args.m
+   
     if platform.system() != "Windows":
         gpg = gnupg.GPG(gnupghome=f"/home/{user}/.gnupg")
     else:
@@ -132,7 +136,7 @@ def main():
             server = "disroot.org"
         elif providername == ( "gmail.com" or "smtp.gmail.com" or "google" or "gmail" ):
             server = "smtp.gmail.com"
-            print("\nTIP: You need to add app password from your Google account for this script to work, in case of error visit:\nhttps://support.google.com/accounts/answer/185833?hl=en\n")
+            print("\nTIP: You need to add app password from your Google account for this script to work, in case of error visit:\nhttps://support.google.com/accounts/answer/185833?hl=en")
         elif providername == ( "posteo.net" or "posteo.de" or "posteo "):
             server = "posteo.de"
         elif providername == ( "startmail.com" or "smtp.startmail.com" or "startmail" ):
@@ -143,7 +147,7 @@ def main():
             server = "smtp.live.com"
         elif providername == ( "outlook.com" or "outlook" or "hotmail.com" or "hotmail" ):
             server = "smtp-mail.outlook.com"
-            print("\nTIP: You need to add app password from your Microsoft account for this script to work, in case of error visit: \nhttps://support.microsoft.com/en-us/account-billing/using-app-passwords-with-apps-that-don-t-support-two-step-verification-5896ed9b-4263-e681-128a-a6f2979a7944\n")
+            print("\nTIP: You need to add app password from your Microsoft account for this script to work, in case of error visit: \nhttps://support.microsoft.com/en-us/account-billing/using-app-passwords-with-apps-that-don-t-support-two-step-verification-5896ed9b-4263-e681-128a-a6f2979a7944")
         else:
             print("\nERROR: Provider not in the list, contact maintainer of this project for adding the provider you use to the list or simply use the --ms command to input the SMTP server manually.")
             sys.exit(1)
